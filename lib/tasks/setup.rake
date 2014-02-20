@@ -9,7 +9,6 @@ task :setup do
     database       = File.join(Rails.root, 'config', 'database.yml')
     secret_token   = File.join(Rails.root, 'config', 'initializers', 'secret_token.rb')
     omniauth       = File.join(Rails.root, 'config', 'initializers', 'omniauth.rb')
-    university_web = File.join(Rails.root, 'config', 'initializers', 'university_web.rb')
 
     unless File.exists?(database)
       create_file(database, "Database config", true)
@@ -32,13 +31,6 @@ task :setup do
     else
       "Omniauth config file already exists"
     end
-
-    unless File.exists?(university_web)
-      create_file(university_web, "University-web config")
-    else
-      "University-web config file already exists"
-    end
-
   end
 
   section "Database" do

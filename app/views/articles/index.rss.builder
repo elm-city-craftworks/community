@@ -1,9 +1,9 @@
 xml.instruct! :xml, :version => "1.0"
 xml.rss :version => "2.0",  'xmlns:atom' => "http://www.w3.org/2005/Atom" do
   xml.channel do
-    xml.title "Community @ Mendicant University"
-    xml.description "Mendicant University's Community Site"
-    xml.link "http://community.mendicantuniversity.org"
+    xml.title "Community @ Practicing Ruby"
+    xml.description "Practicing Ruby's Community Site"
+    xml.link "http://community.practicingruby.com"
     xml.send('atom:link', :href => articles_url(:format => :rss), :rel => "self", :type => "application/rss+xml")
     @articles.each do |article|
       xml.item do

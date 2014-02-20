@@ -3,8 +3,8 @@ class SessionsController < ApplicationController
 
   def create
     unless user = User.find_by_uid(auth_hash['uid'])
-      user = User.create_from_hash(auth_hash, :name  => uniweb_user.name,
-                                              :email => uniweb_user.email                                 )
+      user = User.create_from_hash(auth_hash,
+              :email => practicing_ruby_user.contact_email)
     end
 
     if user.errors.any?
@@ -43,26 +43,17 @@ class SessionsController < ApplicationController
     auth_hash['info']['nickname']
   end
 
-  def uniweb_user
-    @uniweb_user ||= UniversityWeb::User.find_by_github(nick)
+  def practicing_ruby_user
+    @practicing_ruby_user ||= PracticingRuby::User.find_by_github_nickname(nick)
   end
-
 
   def check_permissions
-    user = uniweb_user
+    user = practicing_ruby_user
 
-    alert = \
-      if user.nil?
-        logger.warn "[session] #{nick} doesn't exist"
-        "Your github account is not registered on University-web"
-      elsif !user.alumnus && !user.staff && !user.visiting_teacher
-         logger.warn "[session] #{nick} access denied"
-        "Sorry, but currently only Alumni and Staff have access to this site"
-      end
-
-    unless alert.blank?
-      redirect_to root_path, :alert => alert
+    unless user.try(:active)
+      logger.warn "[session] #{nick} isn't a subscriber"
+      redirect_to root_path,
+        :alert => "Your github account is not an active Practicing Ruby subscriber"
     end
   end
-
 end

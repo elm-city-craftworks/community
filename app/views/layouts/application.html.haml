@@ -3,7 +3,7 @@
   %head
     %title
       = yield(:title).blank? ? controller_name.humanize : yield(:title)
-      \- Mendicant Community
+      \- Community @ Practicing Ruby
 
 
     = stylesheet_link_tag 'application'
@@ -15,12 +15,5 @@
   %body
     = render "shared/navigation"
     = render "shared/section_header"
-
-    #site-alert
-      Hi Friend! This is a static copy of Mendicant's old Community Site. 
-      This project has been sunset therefore we are no longer updating it. 
-      For the latest news about the school, check out 
-      = link_to "our main site.", "http://mendicantuniversity.org"
-      Thanks for visiting!
     #container= yield
     = render "shared/footer"

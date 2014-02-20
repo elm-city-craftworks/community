@@ -1,6 +1,6 @@
 atom_feed(url: articles_url(format: :atom)) do |feed|
-  feed.title    "Community @ Mendicant University"
-  feed.subtitle "Mendicant University's Community Site"
+  feed.title    "Community @ Practicing Ruby"
+  feed.subtitle "Practicing Ruby's Community Site"
   feed.updated  @articles.first.created_at
 
   @articles.each do |article|

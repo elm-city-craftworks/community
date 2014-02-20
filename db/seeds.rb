@@ -1,4 +1,3 @@
-Page.create(title: "About",    body: "TODO")
-Page.create(title: "Unicorns", body: "TODO", protected: true)
+Page.create(title: "About", body: "TODO")
 
-puts "Pages genearted".color(:green)
+puts "Pages generated".color(:green)

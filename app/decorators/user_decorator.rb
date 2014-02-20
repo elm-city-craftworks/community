@@ -22,7 +22,7 @@ class UserDecorator < ApplicationDecorator
   def github_link
     return if user.github.blank?
 
-    h.link_to user.github, "https://github.com/#{user.github}",
+    h.link_to user.github, github_url,
       :class => "btn-auth btn-github"
   end
 
@@ -44,4 +44,7 @@ class UserDecorator < ApplicationDecorator
     h.md(user.description)
   end
 
+  def github_url
+    "https://github.com/#{user.github}"
+  end
 end

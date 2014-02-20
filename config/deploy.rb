@@ -1,43 +1,34 @@
 require 'bundler/capistrano'
-
-set :whenever_identifier, defer { application }
-# require 'whenever/capistrano'
+require 'capistrano/confirm_branch'
+require 'capistrano-unicorn'
 
 set :application, "community"
-set :repository,  "git://github.com/mendicant-original/community.git"
+set :repository,  "https://github.com/elm-city-craftworks/community.git"
+
+set :deploy_to, "/home/deploy/community"
+set :user, "deploy"
 
 set :scm, :git
-set :deploy_to, "/var/rapp/#{application}"
-
-set :user, "git"
 set :use_sudo, false
-
+set :branch, $1 if `git branch` =~ /\* (\S+)\s/m
 set :deploy_via, :remote_cache
 
-set :branch, "master"
-
-server "community.mendicantuniversity.org", :app, :web, :db, :primary => true
-
-namespace :deploy do
-  task :restart, :roles => :app do
-    run "touch #{current_path}/tmp/restart.txt"
-  end
-end
+server "community.practicingruby.com", :app, :web, :db, :primary => true
 
 after 'deploy:update_code' do
   {"database.yml"      => "config/database.yml",
    "twitter.yml"       => "config/twitter.yml",
    "omniauth.rb"       => "config/initializers/omniauth.rb",
    "secret_token.rb"   => "config/initializers/secret_token.rb",
-   "university_web.rb" => "config/initializers/university_web.rb",
    "mail.rb"           => "config/initializers/mail.rb"}.
   each do |from, to|
     run "ln -nfs #{shared_path}/#{from} #{release_path}/#{to}"
   end
 
-  run "ln -nfs /var/rapp/mail_whale/shared/mail_whale.store #{release_path}/db/newman.store"
+  # run "ln -nfs /var/rapp/mail_whale/shared/mail_whale.store #{release_path}/db/newman.store"
 end
 
+after 'deploy:restart', 'unicorn:restart'
 after "deploy", "deploy:migrate"
 after "deploy", 'deploy:cleanup'
 

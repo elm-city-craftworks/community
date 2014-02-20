@@ -1,11 +1,12 @@
-![Community Logo](https://github.com/mendicant-original/community/raw/master/doc/community.png)
+Community @ Practicing Ruby
+===========================
 
-A community based site for [Mendicant University](http://mendicantuniversity.org). For more information about the site, check out its
-[about page](http://community.mendicantuniversity.org/about).
+A community based site for [Practicing Ruby](https://practicingruby.com) based
+on [Mendicant University's community](http://community.mendicantuniversity.org) site
 
 ## Installation
 
-Community is a Ruby on Rails 3.1 application which runs on Ruby 1.9.2+ and
+Community is a Ruby on Rails 3.2 application which runs on Ruby 2.0+ and
 [PostgreSQL](http://www.postgresql.org) databases. Other databases like MySQL
 or SQLite are not officially supported.
 
@@ -13,7 +14,7 @@ or SQLite are not officially supported.
 
 To install a development version of Community, follow these steps:
 
-1. Fork our GitHub repository: <http://github.com/mendicant-original/community>
+1. Fork our GitHub repository: <https://github.com/elm-city-craftworks/community>
 2. Clone the fork to your computer
 3. If you don't already have bundler installed, get it by running `gem install bundler`
 4. Run `bundle install` to install all of the project's dependencies
@@ -29,13 +30,14 @@ bundle exec rake setup
 
 ## Contributing
 
-Features and bugs are tracked through [Github Issues](https://github.com/mendicant-original/community/issues).
+Features and bugs are tracked through [Github
+Issues](https://github.com/elm-city-craftworks/community/issues).
 
 Contributors retain copyright to their work but must agree to release their
 contributions under the [Affero GPL version 3](http://www.gnu.org/licenses/agpl.html).
 
 If you would like to help with developing Community, just file a ticket in our
-[issue tracker](https://github.com/mendicant-original/community/issues)
+[issue tracker](https://github.com/elm-city-craftworks/community/issues)
 and we will find something to keep you busy.
 
 ### Submitting a Pull Request
@@ -60,7 +62,7 @@ and we will find something to keep you busy.
 Jordan Byron // [jordanbyron.com](http://jordanbyron.com) <br/>
 Gregory Brown // [majesticseacreature.com](http://majesticseacreature.com/)
 
-[Full List](https://github.com/mendicant-original/community/contributors)
+[Full List](https://github.com/elm-city-craftworks/community/contributors)
 
 ## License
 
@@ -71,3 +73,4 @@ If you wish to contribute to Community, you will retain your own copyright but m
 ------
 
 Community - a [Mendicant University](http://mendicantuniversity.org) project
+revived by [Elm City Craftworks](http://elmcitycraftworks.org)

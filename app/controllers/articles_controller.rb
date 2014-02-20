@@ -5,7 +5,6 @@ class ArticlesController < ApplicationController
   before_filter :find_article,          :only => [:show, :edit, :update, :destroy]
   before_filter :mark_as_read,          :only => [:show]
   before_filter :authorized_users_only, :only => [:edit, :update, :destroy]
-  before_filter :profile_required,      :only => [:new, :create]
 
   def index
     @articles = Article.includes(:author).newest.paginate(:page => params[:page])
