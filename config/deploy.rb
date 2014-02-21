@@ -17,7 +17,7 @@ server "community.practicingruby.com", :app, :web, :db, :primary => true
 
 after 'deploy:update_code' do
   {"database.yml"      => "config/database.yml",
-   "twitter.yml"       => "config/twitter.yml",
+   # "twitter.yml"       => "config/twitter.yml",
    "omniauth.rb"       => "config/initializers/omniauth.rb",
    "secret_token.rb"   => "config/initializers/secret_token.rb",
    "mail.rb"           => "config/initializers/mail.rb"}.
