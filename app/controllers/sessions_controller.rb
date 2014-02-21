@@ -5,6 +5,10 @@ class SessionsController < ApplicationController
     unless user = User.find_by_uid(auth_hash['uid'])
       user = User.create_from_hash(auth_hash,
               :email => practicing_ruby_user.contact_email)
+    else
+      # Make sure our copy of the user's github nickname matches the one on
+      # GitHub
+      user.update_attributes(:github => nick)
     end
 
     if user.errors.any?
