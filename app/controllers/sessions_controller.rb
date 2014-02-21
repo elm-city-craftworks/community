@@ -19,7 +19,7 @@ class SessionsController < ApplicationController
   def destroy
     self.current_user = nil
 
-    redirect_to request.env['HTTP_REFERER'] || root_path
+    redirect_to root_path
   end
 
   def failure
