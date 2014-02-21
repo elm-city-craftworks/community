@@ -43,8 +43,13 @@ class SessionsController < ApplicationController
     auth_hash['info']['nickname']
   end
 
+  def uid
+    auth_hash['uid']
+  end
+
   def practicing_ruby_user
-    @practicing_ruby_user ||= PracticingRuby::User.find_by_github_nickname(nick)
+    @practicing_ruby_user ||= PracticingRuby::Authorization
+      .find_by_github_uid(uid).try(:user)
   end
 
   def check_permissions
